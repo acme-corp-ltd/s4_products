@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Extract{% endblock %}
+
+{% macro datarow(item) %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.category }}</td>
+    </tr>
+{% endmacro %}
+
+{% block body %}
+    <div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+            </tr>
+            {% if datalist is defined and datalist %}
+                {% for item in datalist %}
+                    {{ _self.datarow(item) }}
+                {% endfor %}
+            {% endif %}
+            {% if dataitem is defined and dataitem %}
+                {{ _self.datarow(dataitem) }}
+            {% endif %}
+        </table>
+    </div>
+{% endblock %}
